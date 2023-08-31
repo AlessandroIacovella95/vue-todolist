@@ -19,10 +19,21 @@
             <h1>{{ title }}</h1>
         </div>
 
+        <div class="w-50 mx-auto input-group mt-3 mb-3">
+            <input type="text" class="form-control" placeholder="Inserisci una nuova task" aria-label="Recipient's username" aria-describedby="button-addon2" v-model="newTask">
+            <button @click="addToDo()" class="btn btn-outline-success" type="button" id="button-addon2">Aggiungi</button>
+        </div>
+
+        <div :class="'alert-' + alert.type" v-if="alert.show==true" class="alert alert-dismissible" role="alert">
+            {{alert.message}}
+
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" @click="alert.show=false"></button>
+        </div>
+
         <ul class="mt-3 todo_list">
             <li class="todo_element clearfix" v-for="(todoElement, index) in todoList" :class="(todoElement.done == true) ? 'text-decoration-line-through' : ''">
                 {{todoElement.text}}
-                <span @click=" deleteTask(index)" class="todo-actions">X</span>
+                <span @click="deleteTask(index)" class="todo-actions">X</span>
             </li>
         </ul>
         
