@@ -20,7 +20,7 @@
         </div>
 
         <div class="w-50 mx-auto input-group mt-3 mb-3">
-            <input type="text" class="form-control" placeholder="Inserisci una nuova task" aria-label="Recipient's username" aria-describedby="button-addon2" v-model="newTask">
+            <input type="text" class="form-control" placeholder="Inserisci una nuova task" aria-label="Recipient's username" aria-describedby="button-addon2" @keyup.enter="addToDo()" v-model="newTask">
             <button @click="addToDo()" class="btn btn-outline-success" type="button" id="button-addon2">Aggiungi</button>
         </div>
 
