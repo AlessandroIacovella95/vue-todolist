@@ -16,9 +16,12 @@
 
 .todo-actions{
     float: right;
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: bold;
     cursor: pointer;
+    text-align: center;
+    width: 20px;
+    aspect-ratio: 1;
 }
 
 .clearfix{
