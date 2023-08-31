@@ -9,7 +9,7 @@ createApp({
         alert:{
             message:'',
             show: false,
-            type:','
+            type:''
 
         },
         todoList : [
@@ -46,8 +46,14 @@ createApp({
             text: this.newTask.trim(),
             done: false,
         };
-    
+        
         if (toDo.text.length < 5) {
+
+            if (this.interval) {
+                clearTimeout(this.interval);
+                this.interval= false;  
+            }
+
             this.alert.type ='danger',
             this.alert.message ='Errore: Inserisci almeno 5 caratteri'
             this.alert.show= true
@@ -65,8 +71,7 @@ createApp({
             clearTimeout(this.interval);
             this.interval= false;  
         }
-
-        
+ 
         this.alert.type='success';
         this.alert.message='Task aggiunta con successo';
         this.alert.show=true;
@@ -81,5 +86,9 @@ createApp({
 
         
     },
+
+    changeDone(index){
+        this.todoList[index].done = !this.todoList[index].done
+    }
 }
 }).mount('#app')
