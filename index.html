@@ -31,7 +31,7 @@
         </div>
 
         <ul class="mt-3 todo_list">
-            <li class="todo_element clearfix" v-for="(todoElement, index) in todoList" :class="(todoElement.done == true) ? 'text-decoration-line-through' : ''">
+            <li @click=" todoElement.done = !todoElement.done" class="todo_element clearfix" v-for="(todoElement, index) in todoList" :class="(todoElement.done == true) ? 'text-decoration-line-through' : ''">
                 {{todoElement.text}}
                 <span @click="deleteTask(index)" class="todo-actions">X</span>
             </li>

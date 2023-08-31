@@ -60,6 +60,6 @@ createApp({
         this.alert.show=true;
         this.todoList.unshift(toDo);  
         this.newTask='';
-    }
+    },
 }
 }).mount('#app')
