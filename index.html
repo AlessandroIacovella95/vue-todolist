@@ -16,26 +16,32 @@
 <body>
     <div class="container mt-5" id="app">
         <div class="text-center border_bottom">
+            <!-- Titolo -->
             <h1>{{ title }}</h1>
         </div>
 
+        <!-- Input Text per inserimento task da parte dell'utente -->
         <div class="w-50 mx-auto input-group mt-3 mb-3">
-            <input type="text" class="form-control" placeholder="Inserisci una nuova task" aria-label="Recipient's username" aria-describedby="button-addon2" @keyup.enter="addToDo()" v-model="newTask">
+            <input type="text" class="form-control" placeholder="Inserisci una nuova task" aria-label="Inserisci una nuova task" aria-describedby="button-addon2" @keyup.enter="addToDo()" v-model="newTask">
             <button @click="addToDo()" class="btn btn-outline-success" type="button" id="button-addon2">Aggiungi</button>
         </div>
 
+        <!-- Messaggio diverso in base alle condizioni impostate  -->
         <div :class="'alert-' + alert.type" v-if="alert.show==true" class="alert alert-dismissible" role="alert">
             {{alert.message}}
-
+            <!-- Bottone per chiudere l'alert -->
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" @click="alert.show=false"></button>
         </div>
-
-        <ul class="mt-3 todo_list">
+        <!-- Lista dei Todo -->
+        <ul v-if="todoList.length" class="mt-3 todo_list">
+            <!-- Singolo Todo -->
             <li @click="changeDone(index)" class="todo_element clearfix" v-for="(todoElement, index) in todoList" :class="(todoElement.done == true) ? 'text-decoration-line-through' : ''">
                 {{todoElement.text}}
                 <span @click.stop="deleteTask(index)" class="todo-actions">X</span>
             </li>
         </ul>
+        <!-- Testo nel caso non ci sono Todo nella lista -->
+        <h3 v-else class="mt-3 text-center">Nessuno elemento nella lista</h3>
         
     </div>
 </body>
